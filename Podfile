@@ -6,7 +6,7 @@ target 'T1' do
   use_frameworks!
 
   # Pods for T1
-
+  pod 'SnapKit', '~> 3.2'
   target 'T1Tests' do
     inherit! :search_paths
     # Pods for testing
