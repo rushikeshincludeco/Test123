@@ -1,0 +1,35 @@
+machine:
+  xcode:
+    version: "8.3.1"
+  environment:
+    GYM_CODE_SIGNING_IDENTITY: "iPhone Distribution: Include Technologies (8DMCVMABTV)"
+checkout:
+  post:
+    - git submodule sync
+    - git submodule update --init --recursive
+dependencies:
+  pre:
+    - sudo gem install shenzhen
+  override:
+    - pod install:
+        timeout: 1800
+  cache_directories:
+    - "~/.cocoapods"
+test:
+  override:
+    - set -o pipefail &&
+      xcodebuild
+        -sdk iphonesimulator
+        -workspace testApp.xcworkspace
+        -scheme "testApp"
+        -destination 'platform=iOS Simulator,name=iPhone 6,OS=latest'
+        clean build test |
+      tee $CIRCLE_ARTIFACTS/xcode_raw.log |
+      xcpretty --color --report junit --output $CIRCLE_TEST_REPORTS/xcode/results.xml
+deployment:
+  hockey:
+    branch: master
+    commands:
+       - xcodebuild archive -workspace testApp.xcworkspace -scheme testApp -archivePath testApp.xcarchive
+       - xcodebuild -exportArchive -archivePath testApp.xcarchive -exportPath ./ -exportFormat ipa -exportProvisioningProfile "iPhone Distribution: Include Technologies (8DMCVMABTV)"
+       - ipa distribute:hockeyapp -m "circleci build" --token $HOCKEY_APP_TOKEN
