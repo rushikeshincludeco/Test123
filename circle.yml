@@ -9,11 +9,6 @@ dependencies:
     - gem install shenzhen
     - gem install bundler
     - sudo gem install gym
-  override:
-    - pod install:
-        timeout: 1800
-  cache_directories:
-    - "~/.cocoapods"
 deployment:
   hockey:
     branch: master
