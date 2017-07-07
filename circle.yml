@@ -7,3 +7,4 @@ deployment:
   hockey:
     branch: master
     commands:
+       - xcodebuild -sdk iphoneos -workspace "T1.xcworkspace" -scheme "T1" -configuration 'Release' clean build archive -archivePath $CIRCLE_ARTIFACTS/T1.xcarchive
