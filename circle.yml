@@ -15,3 +15,8 @@ dependencies:
         timeout: 1800
   cache_directories:
     - "~/.cocoapods"
+deployment:
+  beta_distribution:
+    branch: master
+     commands:
+       - gym
