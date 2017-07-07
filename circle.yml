@@ -16,7 +16,7 @@ dependencies:
   cache_directories:
     - "~/.cocoapods"
 deployment:
-  beta_distribution:
+  hockey:
     branch: master
-     commands:
+    commands:
        - gym
