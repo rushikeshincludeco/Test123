@@ -7,4 +7,3 @@ deployment:
   hockey:
     branch: master
     commands:
-       - xcodebuild archive -workspace <T1>.xcworkspace -scheme <T1> -archivePath </Library/Developer/Xcode/Archives>.xcarchive
