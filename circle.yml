@@ -13,5 +13,5 @@ deployment:
   hockey:
     branch: master
     commands:
-       - fastlane gym --scheme "T1" --codesigning_identity $GYM_CODE_SIGNING_IDENTITY -c Debug
+       - fastlane gym --scheme "T1" --codesigning_identity $GYM_CODE_SIGNING_IDENTITY -c Release
        - ipa distribute:hockeyapp -m “circleci build” --token $HOCKEY_APP_TOKEN
