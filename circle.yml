@@ -3,15 +3,8 @@ machine:
     version: "8.3.2"
   environment:
     GYM_CODE_SIGNING_IDENTITY: "iPhone Distribution: Include Technologies (8DMCVMABTV)"
-dependencies:
-  pre:
-    - gem install fastlane
-    - gem install shenzhen
-    - gem install bundler
-    - sudo gem install gym
 deployment:
   hockey:
     branch: master
     commands:
-       - fastlane gym --scheme "T1" --codesigning_identity $GYM_CODE_SIGNING_IDENTITY -c Release
-       - ipa distribute:hockeyapp -m “circleci build” --token $HOCKEY_APP_TOKEN
+       - xcodebuild archive -workspace <T1>.xcworkspace -scheme <T1> -archivePath </Library/Developer/Xcode/Archives>.xcarchive
