@@ -5,8 +5,8 @@ machine:
     GYM_CODE_SIGNING_IDENTITY: "iPhone Distribution: Include Technologies (8DMCVMABTV)"
 dependencies:
   pre:
-    - gem install fastlane
-    - gem install shenzhen
+    - sudo gem install fastlane
+    - sudo gem install shenzhen
   override:
     - pod install:
         timeout: 1800
