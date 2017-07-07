@@ -18,5 +18,5 @@ deployment:
   hockey:
     branch: master
     commands:
-       - fastlane gym --scheme "T1"
+       - fastlane gym --workspace “T1.xcworkspace” --scheme "T1"
        - ipa distribute:hockeyapp -m “circleci build” --token $HOCKEY_APP_TOKEN
